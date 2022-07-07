@@ -12,6 +12,7 @@
         <module>boss-register</module>
         <module>boss-auth</module>
         <module>boss-gateway</module>
+        <module>boss-server</module>
     </modules>
     <packaging>pom</packaging>
 

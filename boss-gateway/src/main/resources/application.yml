@@ -22,6 +22,14 @@ zuul:
       path: /auth/**
       serviceId: Boss-Auth
       sensitiveHeaders: "*"
+    system:
+      path: /system/**
+      serviceId: Boss-Server-System
+      sensitiveHeaders: "*"
+    test:
+      path: /test/**
+      serviceId: Boss-Server-Test
+      sensitiveHeaders: "*"
   retryable: true
   ignored-services: "*"
   ribbon:
