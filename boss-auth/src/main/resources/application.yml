@@ -15,6 +15,23 @@ spring:
         max-active: 2000
         max-wait: 10000
     timeout: 5000
+  datasource:
+    dynamic:
+      hikari:
+        connection-timeout: 30000
+        max-lifetime: 1800000
+        max-pool-size: 15
+        min-idle: 5
+        connection-test-query: select 1
+        pool-name: BossHikariCP
+      primary: base
+      datasource:
+        base:
+          username: root
+          password: 16250
+          driver-class-name: com.mysql.cj.jdbc.driver
+          url: jdbc:mysql://localhost:3306/boss-rbac?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+
 
 eureka:
   instance:
@@ -26,3 +43,9 @@ eureka:
     registry-fetch-interval-seconds: 3
     service-url:
       defaultZone: http://boss:16250@localhost:9001/register/eureka/
+
+mybatis-plus:
+  configuration:
+    jdbc-type-for-null: null
+  global-config:
+    banner: false
