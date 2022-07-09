@@ -2,7 +2,7 @@ package com.boss.auth.config;
 
 import com.boss.auth.properties.BossAuthProperties;
 import com.boss.auth.properties.BossClientsProperties;
-import com.boss.auth.service.BossUserDetailService;
+import com.boss.auth.service.impl.BossUserDetailServiceImpl;
 import com.boss.auth.translator.BossWebResponseExceptionTranslator;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
@@ -38,7 +38,7 @@ public class BossAuthorizationServerConfigure extends AuthorizationServerConfigu
     private RedisConnectionFactory redisConnectionFactory;
 
     @Resource
-    private BossUserDetailService userDetailService;
+    private BossUserDetailServiceImpl userDetailService;
 
     @Resource
     private PasswordEncoder passwordEncoder;

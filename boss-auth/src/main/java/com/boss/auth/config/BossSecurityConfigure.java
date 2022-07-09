@@ -1,6 +1,6 @@
 package com.boss.auth.config;
 
-import com.boss.auth.service.BossUserDetailService;
+import com.boss.auth.service.impl.BossUserDetailServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,7 +21,7 @@ import javax.annotation.Resource;
 public class BossSecurityConfigure extends WebSecurityConfigurerAdapter {
 
     @Resource
-    private BossUserDetailService userDetailService;
+    private BossUserDetailServiceImpl userDetailService;
 
     @Resource
     private PasswordEncoder passwordEncoder;

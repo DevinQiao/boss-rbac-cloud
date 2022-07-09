@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boss.server.system.dao.RoleDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.boss.common.entity.po.RolePO">
+        <id column="id" property="id" />
+        <result column="role_code" property="roleCode" />
+        <result column="role_name" property="roleName" />
+        <result column="introduction" property="introduction" />
+        <result column="version" property="version" />
+        <result column="is_deleted" property="deleted" />
+    </resultMap>
+
+    <insert id="assignRolePermission">
+        INSERT INTO t_role_permission ( role_id, permission_id )
+        VALUES
+        <foreach collection="permissionIds" item="item" index="index" separator=",">
+            (#{roleId},#{item})
+        </foreach>
+    </insert>
+
+    <select id="findRolesByUserId" resultType="com.boss.common.entity.po.RolePO">
+        SELECT
+            r.id,
+            r.role_code,
+            r.role_name,
+            r.introduction,
+            r.version,
+            r.is_deleted
+        FROM
+            t_role r
+            LEFT JOIN t_user_role ur ON r.id = ur.role_id
+        WHERE
+            ur.user_id = #{userID}
+    </select>
+</mapper>

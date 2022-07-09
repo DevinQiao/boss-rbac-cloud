@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 public class BossWebResponseExceptionTranslator implements WebResponseExceptionTranslator {
 
     @Override
-    public ResponseEntity translate(Exception e) throws Exception {
+    public ResponseEntity<?> translate(Exception e) throws Exception {
         ResponseEntity.BodyBuilder status = ResponseEntity.status(HttpStatus.INSUFFICIENT_STORAGE);
         BossResponse response = new BossResponse();
         StringBuilder message = new StringBuilder("认证失败");
