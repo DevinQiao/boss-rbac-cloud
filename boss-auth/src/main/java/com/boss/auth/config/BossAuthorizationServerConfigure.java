@@ -1,12 +1,18 @@
 package com.boss.auth.config;
 
+import com.boss.auth.properties.BossAuthProperties;
+import com.boss.auth.properties.BossClientsProperties;
 import com.boss.auth.service.BossUserDetailService;
+import com.boss.auth.translator.BossWebResponseExceptionTranslator;
+import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.config.annotation.builders.InMemoryClientDetailsServiceBuilder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -37,21 +43,43 @@ public class BossAuthorizationServerConfigure extends AuthorizationServerConfigu
     @Resource
     private PasswordEncoder passwordEncoder;
 
+    @Resource
+    private BossAuthProperties authProperties;
+
+    @Resource
+    private BossWebResponseExceptionTranslator exceptionTranslator;
+
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory()
-                .withClient("boss")
-                .secret(passwordEncoder.encode("16250"))
-                .authorizedGrantTypes("password", "refresh_token")
-                .scopes("all");
+        BossClientsProperties[] clientsArray = authProperties.getClients();
+        InMemoryClientDetailsServiceBuilder builder = clients.inMemory();
+        if (ArrayUtils.isNotEmpty(clientsArray)) {
+            for (BossClientsProperties client :
+                    clientsArray) {
+                if (StringUtils.isBlank(client.getClient())) {
+                    throw new Exception("client不能为空");
+                }
+                if (StringUtils.isBlank(client.getSecret())) {
+                    throw new Exception("secret不能为空");
+                }
+                String[] grantTypes =
+                        StringUtils.splitByWholeSeparatorPreserveAllTokens(client.getGrantType(), ",");
+                builder.withClient(client.getClient())
+                        .secret(passwordEncoder.encode(client.getSecret()))
+                        .authorizedGrantTypes(grantTypes)
+                        .scopes(client.getScope());
+            }
+        }
     }
 
     @Override
+    @SuppressWarnings("all")
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.tokenStore(tokenStore())
                 .userDetailsService(userDetailService)
                 .authenticationManager(authenticationManager)
-                .tokenServices(defaultTokenServices());
+                .tokenServices(defaultTokenServices())
+                .exceptionTranslator(exceptionTranslator);
     }
 
     @Bean
@@ -65,8 +93,8 @@ public class BossAuthorizationServerConfigure extends AuthorizationServerConfigu
         DefaultTokenServices tokenServices = new DefaultTokenServices();
         tokenServices.setTokenStore(tokenStore());
         tokenServices.setSupportRefreshToken(true);
-        tokenServices.setAccessTokenValiditySeconds(60 * 60 * 24);
-        tokenServices.setRefreshTokenValiditySeconds(60 * 60 * 24 * 7);
+        tokenServices.setAccessTokenValiditySeconds(authProperties.getAccessTokenValiditySeconds());
+        tokenServices.setRefreshTokenValiditySeconds(authProperties.getRefreshTokenValiditySeconds());
         return tokenServices;
     }
 }

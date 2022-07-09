@@ -9,11 +9,16 @@
 
     <parent>
         <groupId>com.boss</groupId>
-        <artifactId>boss-common</artifactId>
+        <artifactId>boss-rbac-cloud</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
+        <dependency>
+            <groupId>com.boss</groupId>
+            <artifactId>boss-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
