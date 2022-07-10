@@ -2,6 +2,8 @@ package com.boss.server.system.config;
 
 import com.boss.common.handler.BossAccessDeniedHandler;
 import com.boss.common.handler.BossAuthExceptionEntryPoint;
+import com.boss.server.system.properties.BossServerSystemProperties;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
@@ -24,12 +26,18 @@ public class BossServerSystemResourceServerConfigure extends ResourceServerConfi
     @Resource
     private BossAccessDeniedHandler accessDeniedHandler;
 
+    @Resource
+    private BossServerSystemProperties properties;
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
+        String[] anonUrls = StringUtils.splitByWholeSeparatorPreserveAllTokens(properties.getAnonUrl(), ",");
+
         http.csrf().disable()
                 .requestMatchers().antMatchers("/**")
                 .and()
                 .authorizeRequests()
+                .antMatchers(anonUrls).permitAll()
                 .antMatchers("/**").authenticated();
     }
 
