@@ -20,6 +20,11 @@ public class BossResponse extends HashMap<String, Object> {
         return this;
     }
 
+    public BossResponse statusCode(Integer statusCode) {
+        this.put("statusCode", statusCode);
+        return this;
+    }
+
     @Override
     public BossResponse put(String key, Object value) {
         super.put(key, value);
@@ -32,5 +37,9 @@ public class BossResponse extends HashMap<String, Object> {
 
     public Object getData() {
         return get("data");
+    }
+
+    public Integer getStatusCode() {
+        return (Integer) get("statusCode");
     }
 }

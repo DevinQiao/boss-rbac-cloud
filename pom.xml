@@ -32,7 +32,6 @@
         <jwt.version>0.9.1</jwt.version>
         <lombok.version>1.18.16</lombok.version>
         <velocity.version>2.3</velocity.version>
-        <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
     </properties>
 
     <dependencyManagement>
@@ -105,13 +104,6 @@
                 <groupId>org.apache.velocity</groupId>
                 <artifactId>velocity-engine-core</artifactId>
                 <version>${velocity.version}</version>
-            </dependency>
-
-            <!--mapstruct-->
-            <dependency>
-                <groupId>org.mapstruct</groupId>
-                <artifactId>mapstruct</artifactId>
-                <version>${org.mapstruct.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

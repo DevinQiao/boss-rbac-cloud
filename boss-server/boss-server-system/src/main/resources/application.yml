@@ -4,8 +4,31 @@ server:
 spring:
   application:
     name: Boss-Server-System
-  autoconfigure:
-    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  datasource:
+    dynamic:
+      hikari:
+        connection-timeout: 30000
+        max-lifetime: 1800000
+        max-pool-size: 15
+        min-idle: 5
+        connection-test-query: select 1
+        pool-name: BossHikariCP
+      primary: base
+      datasource:
+        base:
+          username: root
+          password: 16250
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/boss-rbac?useUnicode=ture&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=ture&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+      p6spy: true
+
+mybatis-plus:
+  type-aliases-package: com.boss.common.entity.po
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    jdbc-type-for-null: null
+  global-config:
+    banner: false
 
 eureka:
   instance:

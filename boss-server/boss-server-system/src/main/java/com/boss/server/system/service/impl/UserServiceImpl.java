@@ -1,9 +1,9 @@
 package com.boss.server.system.service.impl;
 
+import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.boss.common.converter.UserConverter;
 import com.boss.common.entity.dto.UserDTO;
 import com.boss.common.entity.dto.UserRoleDTO;
 import com.boss.common.entity.po.UserPO;
@@ -13,8 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.annotation.Resource;
 
 /**
  * <p>
@@ -28,15 +26,12 @@ import javax.annotation.Resource;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserDao, UserPO> implements IUserService {
 
-    @Resource
-    private UserConverter userConverter;
-
     @Override
     public UserDTO findUserByUserName(String username) {
         QueryWrapper<UserPO> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("username", username);
         UserPO userPo = baseMapper.selectOne(queryWrapper);
-        return userConverter.poToDto(userPo);
+        return Convert.convert(UserDTO.class, userPo);
     }
 
     @Override
@@ -47,13 +42,13 @@ public class UserServiceImpl extends ServiceImpl<UserDao, UserPO> implements IUs
 
     @Override
     public boolean save(UserDTO userDTO) {
-        UserPO userPo = userConverter.dtoToPo(userDTO);
+        UserPO userPo = Convert.convert(UserPO.class, userDTO);
         return this.save(userPo);
     }
 
     @Override
     public boolean updateById(UserDTO userDTO) {
-        UserPO userPo = userConverter.dtoToPo(userDTO);
+        UserPO userPo = Convert.convert(UserPO.class, userDTO);
         return this.updateById(userPo);
     }
 

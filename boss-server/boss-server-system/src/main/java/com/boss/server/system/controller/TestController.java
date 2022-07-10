@@ -1,6 +1,7 @@
 package com.boss.server.system.controller;
 
 import com.boss.server.system.feign.IHelloService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,7 +23,13 @@ public class TestController {
         return "Boss-Server-System";
     }
 
-    @GetMapping("user")
+    @GetMapping("test2")
+    @PreAuthorize("hasAnyAuthority('user:update')")
+    public String test2() {
+        return "拥有'user:update'权限";
+    }
+
+    @GetMapping("currentUser")
     public Principal currentUser(Principal principal) {
         return principal;
     }

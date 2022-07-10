@@ -1,9 +1,9 @@
 package com.boss.server.system.service.impl;
 
+import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.boss.common.converter.PermissionConverter;
 import com.boss.common.entity.dto.PermissionDTO;
 import com.boss.common.entity.dto.RolePermissionDTO;
 import com.boss.common.entity.po.PermissionPO;
@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,9 +28,6 @@ import java.util.List;
 @Service
 public class PermissionServiceImpl extends ServiceImpl<PermissionDao, PermissionPO> implements IPermissionService {
 
-    @Resource
-    private PermissionConverter permissionConverter;
-
     /**
      * 通过角色ID集合获得权限集合
      * @param rolesId
@@ -40,14 +36,19 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionDao, Permission
     @Override
     public List<PermissionDTO> findPermissionListByRolesId(List<Long> rolesId) {
         List<PermissionPO> permissionPoListByRolesId = baseMapper.findPermissionListByRolesId(rolesId);
-        return permissionConverter.poToDtoForList(permissionPoListByRolesId);
+        List<PermissionDTO> permissionDTOList = new ArrayList<>();
+        permissionPoListByRolesId.forEach(permissionPO ->
+                permissionDTOList.add(Convert.convert(PermissionDTO.class, permissionPO)));
+        return permissionDTOList;
     }
 
     @Override
     public RolePermissionDTO makePermissionTree(Long roleId) {
         QueryWrapper<PermissionPO> queryWrapper = new QueryWrapper<>();
         List<PermissionPO> permissionPoList = baseMapper.selectList(queryWrapper);
-        List<PermissionDTO> permissionDtos = permissionConverter.poToDtoForList(permissionPoList);
+        List<PermissionDTO> permissionDtos = new ArrayList<>();
+        permissionPoList.forEach(permissionPO ->
+                permissionDtos.add(Convert.convert(PermissionDTO.class, permissionPO)));
         RolePermissionDTO rolePermissionDTO = new RolePermissionDTO();
         rolePermissionDTO.setPermissionList(MenuTree.makeMenuTree(permissionDtos, 0L));
         List<Long> rolesId = new ArrayList<>();
@@ -68,18 +69,18 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionDao, Permission
         QueryWrapper<PermissionPO> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq(!ObjectUtils.isEmpty(code), "code", code);
         PermissionPO permissionPo = baseMapper.selectOne(queryWrapper);
-        return permissionConverter.poToDto(permissionPo);
+        return Convert.convert(PermissionDTO.class, permissionPo);
     }
 
     @Override
     public boolean save(PermissionDTO permissionDTO) {
-        PermissionPO permissionPo = permissionConverter.dtoToPo(permissionDTO);
+        PermissionPO permissionPo = Convert.convert(PermissionPO.class, permissionDTO);
         return this.save(permissionPo);
     }
 
     @Override
     public boolean updateById(PermissionDTO permissionDTO) {
-        PermissionPO permissionPo = permissionConverter.dtoToPo(permissionDTO);
+        PermissionPO permissionPo = Convert.convert(PermissionPO.class, permissionDTO);
         return this.updateById(permissionPo);
     }
 

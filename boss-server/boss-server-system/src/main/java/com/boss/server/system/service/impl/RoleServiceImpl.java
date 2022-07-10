@@ -1,9 +1,9 @@
 package com.boss.server.system.service.impl;
 
+import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.boss.common.converter.RoleConverter;
 import com.boss.common.entity.dto.RoleDTO;
 import com.boss.common.entity.po.RolePO;
 import com.boss.common.entity.vo.RouterVO;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
-import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -30,13 +30,12 @@ import java.util.stream.Collectors;
 @Service
 public class RoleServiceImpl extends ServiceImpl<RoleDao, RolePO> implements IRoleService {
 
-    @Resource
-    private RoleConverter roleConverter;
-
     @Override
     public List<RoleDTO> findRolesByUserId(Long userId) {
         List<RolePO> rolesByUserId = baseMapper.findRolesByUserId(userId);
-        return roleConverter.poToDtoForList(rolesByUserId);
+        List<RoleDTO> roleDTOList = new ArrayList<>();
+        rolesByUserId.forEach(rolePO -> roleDTOList.add(Convert.convert(RoleDTO.class, rolePO)));
+        return roleDTOList;
     }
 
     @Override
@@ -50,7 +49,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleDao, RolePO> implements IRo
         QueryWrapper<RolePO> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq(!ObjectUtils.isEmpty(roleName), "role_name", roleName);
         RolePO rolePo = baseMapper.selectOne(queryWrapper);
-        return roleConverter.poToDto(rolePo);
+        return Convert.convert(RoleDTO.class, rolePo);
     }
 
     @Override
@@ -58,18 +57,18 @@ public class RoleServiceImpl extends ServiceImpl<RoleDao, RolePO> implements IRo
         QueryWrapper<RolePO> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq(!ObjectUtils.isEmpty(roleCode), "role_code", roleCode);
         RolePO rolePo = baseMapper.selectOne(queryWrapper);
-        return roleConverter.poToDto(rolePo);
+        return Convert.convert(RoleDTO.class, rolePo);
     }
 
     @Override
     public boolean save(RoleDTO roleDTO) {
-        RolePO rolePo = roleConverter.dtoToPo(roleDTO);
+        RolePO rolePo = Convert.convert(RolePO.class, roleDTO);
         return this.save(rolePo);
     }
 
     @Override
     public boolean updateById(RoleDTO roleDTO) {
-        RolePO rolePo = roleConverter.dtoToPo(roleDTO);
+        RolePO rolePo = Convert.convert(RolePO.class, roleDTO);
         return this.updateById(rolePo);
     }
 
