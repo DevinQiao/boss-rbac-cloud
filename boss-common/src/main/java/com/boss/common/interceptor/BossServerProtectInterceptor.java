@@ -1,7 +1,7 @@
 package com.boss.common.interceptor;
 
-import com.boss.common.entity.BossZuulConstant;
-import com.boss.common.entity.BossMediaTypeConstant;
+import com.boss.common.entity.constant.BossZuulConstant;
+import com.boss.common.entity.constant.BossMediaTypeConstant;
 import com.boss.common.entity.BossResponse;
 import com.boss.common.utils.BossUtil;
 import org.apache.commons.lang3.StringUtils;

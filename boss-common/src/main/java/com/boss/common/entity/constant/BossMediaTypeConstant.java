@@ -1,4 +1,4 @@
-package com.boss.common.entity;
+package com.boss.common.entity.constant;
 
 /**
  * @author DevinJoe

@@ -1,6 +1,6 @@
 package com.boss.gateway.filter;
 
-import com.boss.common.entity.BossZuulConstant;
+import com.boss.common.entity.constant.BossZuulConstant;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;

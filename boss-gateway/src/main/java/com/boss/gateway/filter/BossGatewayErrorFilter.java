@@ -1,6 +1,6 @@
 package com.boss.gateway.filter;
 
-import com.boss.common.entity.BossMediaTypeConstant;
+import com.boss.common.entity.constant.BossMediaTypeConstant;
 import com.boss.common.entity.BossResponse;
 import com.boss.common.utils.BossUtil;
 import com.netflix.zuul.context.RequestContext;

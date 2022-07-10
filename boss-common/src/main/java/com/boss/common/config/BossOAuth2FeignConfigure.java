@@ -1,6 +1,6 @@
 package com.boss.common.config;
 
-import com.boss.common.entity.BossZuulConstant;
+import com.boss.common.entity.constant.BossZuulConstant;
 import feign.RequestInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpHeaders;

@@ -1,5 +1,6 @@
 package com.boss.auth.config;
 
+import com.boss.auth.filter.ValidateCodeFilter;
 import com.boss.auth.service.impl.BossUserDetailServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
@@ -9,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.annotation.Resource;
 
@@ -26,6 +28,9 @@ public class BossSecurityConfigure extends WebSecurityConfigurerAdapter {
     @Resource
     private PasswordEncoder passwordEncoder;
 
+    @Resource
+    private ValidateCodeFilter validateCodeFilter;
+
     @Bean
     @Override
     protected AuthenticationManager authenticationManager() throws Exception {
@@ -34,7 +39,8 @@ public class BossSecurityConfigure extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.requestMatchers()
+        http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
+                .requestMatchers()
                 .antMatchers("/oauth/**")
                 .and()
                 .authorizeRequests()

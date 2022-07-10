@@ -20,4 +20,8 @@ public class BossAuthProperties {
     private int accessTokenValiditySeconds = 60 * 60 * 24;
 
     private int refreshTokenValiditySeconds = 60 * 60 * 24 * 7;
+
+    private String anonUrl;
+
+    private BossValidateCodeProperties code = new BossValidateCodeProperties();
 }
