@@ -29,6 +29,8 @@ public class BossServerTestResourceServerConfigure extends ResourceServerConfigu
         http.csrf().disable()
                 .requestMatchers().antMatchers("/**")
                 .and()
+                .authorizeRequests().antMatchers("/actuator/**").permitAll()
+                .and()
                 .authorizeRequests()
                 .antMatchers("/**").authenticated();
     }

@@ -6,6 +6,12 @@ spring:
     name: Boos-Gateway
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  boot:
+    admin:
+      client:
+        url: http://localhost:9470
+        username: boss
+        password: 16250
 
 eureka:
   instance:
@@ -43,3 +49,18 @@ zuul:
 
 ribbon:
   ReadTimeout: 3000
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: "@project.description@"
+    version: "@project.version@"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

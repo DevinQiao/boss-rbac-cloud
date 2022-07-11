@@ -31,7 +31,12 @@ spring:
           password: 16250
           driver-class-name: com.mysql.cj.jdbc.Driver
           url: jdbc:mysql://localhost:3306/boss-rbac?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
-
+  boot:
+    admin:
+      client:
+        url: http://localhost:9470
+        username: boss
+        password: 16250
 
 eureka:
   instance:
@@ -51,3 +56,18 @@ mybatis-plus:
     jdbc-type-for-null: null
   global-config:
     banner: false
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: "@project.description@"
+    version: "@project.version@"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

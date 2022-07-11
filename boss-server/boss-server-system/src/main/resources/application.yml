@@ -21,6 +21,12 @@ spring:
           driver-class-name: com.mysql.cj.jdbc.Driver
           url: jdbc:mysql://localhost:3306/boss-rbac?useUnicode=ture&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=ture&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
       p6spy: true
+  boot:
+    admin:
+      client:
+        url: http://localhost:9470
+        username: boss
+        password: 16250
 
 mybatis-plus:
   type-aliases-package: com.boss.common.entity.po
@@ -52,3 +58,18 @@ feign:
 
 hystrix:
   shareSecurityContext: true
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: "@project.description@"
+    version: "@project.version@"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

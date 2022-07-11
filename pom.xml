@@ -13,6 +13,7 @@
         <module>boss-auth</module>
         <module>boss-gateway</module>
         <module>boss-server</module>
+        <module>boss-monitor</module>
     </modules>
     <packaging>pom</packaging>
 
