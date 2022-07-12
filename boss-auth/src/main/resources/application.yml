@@ -6,7 +6,7 @@ spring:
     name: Boss-Auth
   redis:
     database: 0
-    host: localhost
+    host: ${redis.url}
     port: 6379
     lettuce:
       pool:
@@ -30,11 +30,11 @@ spring:
           username: root
           password: 16250
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://localhost:3306/boss-rbac?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+          url: jdbc:mysql://${mysql.url}:3306/boss-rbac?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
   boot:
     admin:
       client:
-        url: http://localhost:9470
+        url: http://${boss-monitor-admin}:9470
         username: boss
         password: 16250
 
@@ -47,7 +47,7 @@ eureka:
     instance-info-replication-interval-seconds: 30
     registry-fetch-interval-seconds: 3
     service-url:
-      defaultZone: http://boss:16250@localhost:9001/register/eureka/
+      defaultZone: http://boss:16250@${boss-register}:9001/register/eureka/
 
 mybatis-plus:
   type-aliases-package: com.boss.common.entity.po

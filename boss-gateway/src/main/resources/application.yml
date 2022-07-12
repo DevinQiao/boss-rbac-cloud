@@ -5,11 +5,11 @@ spring:
   application:
     name: Boos-Gateway
   autoconfigure:
-    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration, org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
   boot:
     admin:
       client:
-        url: http://localhost:9470
+        url: http://${boss-monitor-admin}:9470
         username: boss
         password: 16250
 
@@ -22,7 +22,7 @@ eureka:
     instance-info-replication-interval-seconds: 30
     registry-fetch-interval-seconds: 3
     service-url:
-      defaultZone: http://boss:16250@localhost:9001/register/eureka/
+      defaultZone: http://boss:16250@${boss-register}:9001/register/eureka/
 
 zuul:
   routes:

@@ -4,8 +4,8 @@ import com.boss.auth.properties.BossAuthProperties;
 import com.boss.auth.properties.BossClientsProperties;
 import com.boss.auth.service.impl.BossUserDetailServiceImpl;
 import com.boss.auth.translator.BossWebResponseExceptionTranslator;
-import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -22,6 +22,7 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 import javax.annotation.Resource;
+import java.util.UUID;
 
 /**
  * @author DevinJoe
@@ -54,8 +55,7 @@ public class BossAuthorizationServerConfigure extends AuthorizationServerConfigu
         BossClientsProperties[] clientsArray = authProperties.getClients();
         InMemoryClientDetailsServiceBuilder builder = clients.inMemory();
         if (ArrayUtils.isNotEmpty(clientsArray)) {
-            for (BossClientsProperties client :
-                    clientsArray) {
+            for (BossClientsProperties client : clientsArray) {
                 if (StringUtils.isBlank(client.getClient())) {
                     throw new Exception("client不能为空");
                 }
@@ -84,7 +84,9 @@ public class BossAuthorizationServerConfigure extends AuthorizationServerConfigu
 
     @Bean
     public TokenStore tokenStore() {
-        return new RedisTokenStore(redisConnectionFactory);
+        RedisTokenStore redisTokenStore = new RedisTokenStore(redisConnectionFactory);
+        redisTokenStore.setAuthenticationKeyGenerator(oAuth2Authentication -> UUID.randomUUID().toString());
+        return redisTokenStore;
     }
 
     @Primary

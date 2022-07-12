@@ -13,13 +13,13 @@ spring:
   boot:
     admin:
       client:
-        url: http://localhost:9470
+        url: http://${boss-monitor-admin}:9470
         username: boss
         password: 16250
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: ${boss-register}
   client:
     register-with-eureka: false
     fetch-registry: false

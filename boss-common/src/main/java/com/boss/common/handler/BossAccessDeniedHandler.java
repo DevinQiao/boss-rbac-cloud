@@ -1,6 +1,7 @@
 package com.boss.common.handler;
 
 import com.boss.common.entity.BossResponse;
+import com.boss.common.entity.constant.BossMediaTypeConstant;
 import com.boss.common.utils.BossUtil;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
@@ -19,7 +20,7 @@ public class BossAccessDeniedHandler implements AccessDeniedHandler {
     @Override
     public void handle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AccessDeniedException e) throws IOException, ServletException {
         BossResponse response = new BossResponse();
-        BossUtil.makeResponse(httpServletResponse, "application/json;charset=UTF-8",
+        BossUtil.makeResponse(httpServletResponse, BossMediaTypeConstant.APPLICATION_JSON_UTF8_VALUE,
                 HttpServletResponse.SC_FORBIDDEN, response.message("没有权限访问该资源"));
     }
 }
