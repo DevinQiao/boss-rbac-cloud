@@ -27,6 +27,17 @@ spring:
         url: http://localhost:9470
         username: boss
         password: 16250
+  zipkin:
+    sender:
+      type: rabbit
+  sleuth:
+    sampler:
+      probability: 1
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: boss
+    password: 16250
 
 mybatis-plus:
   type-aliases-package: com.boss.common.entity.po
