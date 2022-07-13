@@ -10,7 +10,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 /**
  * @author bin16
  */
-@EnableDiscoveryClient
 @SpringBootApplication
 @BossCloudApplication
 @EnableBossLettuceRedis
@@ -18,6 +17,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 public class BossAuthApplication {
 
     public static void main(String[] args) {
+        System.setProperty("nacos.logging.default.config.enabled","false");
+
         SpringApplication.run(BossAuthApplication.class, args);
     }
 

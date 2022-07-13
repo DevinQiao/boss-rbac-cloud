@@ -12,7 +12,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
  * @author bin16
  */
 @EnableFeignClients
-@EnableDiscoveryClient
 @SpringBootApplication
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @BossCloudApplication
@@ -20,6 +19,8 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 public class BossServerSystemApplication {
 
     public static void main(String[] args) {
+        System.setProperty("nacos.logging.default.config.enabled","false");
+
         SpringApplication.run(BossServerSystemApplication.class, args);
     }
 
