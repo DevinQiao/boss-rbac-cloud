@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: Boss-Auth
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${nacos.url}:9001
+      config:
+        server-addr: ${nacos.url}:9001
+        group: DEFAULT_GROUP
+        prefix: boss-auth
+        file-extension: yaml
