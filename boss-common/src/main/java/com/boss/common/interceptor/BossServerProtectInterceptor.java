@@ -1,6 +1,6 @@
 package com.boss.common.interceptor;
 
-import com.boss.common.entity.constant.BossZuulConstant;
+import com.boss.common.entity.constant.BossGatewayConstant;
 import com.boss.common.entity.constant.BossMediaTypeConstant;
 import com.boss.common.entity.BossResponse;
 import com.boss.common.utils.BossUtil;
@@ -19,9 +19,9 @@ public class BossServerProtectInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String token = request.getHeader(BossZuulConstant.ZUUL_TOKEN_HEADER);
-        String zuulToken = new String(Base64Utils.encode(BossZuulConstant.ZUUL_TOKEN_VALUE.getBytes()));
-        if (StringUtils.equals(zuulToken, token)) {
+        String token = request.getHeader(BossGatewayConstant.GATEWAY_TOKEN_HEADER);
+        String gatewayToken = new String(Base64Utils.encode(BossGatewayConstant.GATEWAY_TOKEN_VALUE.getBytes()));
+        if (StringUtils.equals(gatewayToken, token)) {
             return true;
         } else {
             BossResponse bossResponse = new BossResponse();

@@ -3,15 +3,45 @@ server:
 
 spring:
   application:
-    name: Boos-Gateway
-  autoconfigure:
-    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration, org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+    name: Boss-Gateay
   boot:
     admin:
       client:
         url: http://${boss-monitor-admin}:9470
         username: boss
         password: 16250
+  cloud:
+    gateway:
+      routes:
+        - id: Boss-Auth
+          uri: lb://Boss-Auth
+          predicates:
+            - Path=/auth/**
+          filters:
+            - name: Hystrix
+              args:
+                name: authfallback
+                fallbackUri: forward:/fallback/Boss-Auth
+        - id: Boss-Server-System
+          uri: lb://Boss-Server-System
+          predicates:
+            - Path=/system/**
+          filters:
+              - name: Hystrix
+                args:
+                  name: systemfallback
+                  fallbackUri: forward:/fallback/Boss-Server-System
+        - id: Boss-Server-Test
+          uri: lb://Boss-Server-Test
+          predicates:
+            - Path=/test/**
+          filters:
+              - name: Hystrix
+                args:
+                  name: testfallback
+                  fallbackUri: forward:/fallback/Boss-Server-Test
+      default-filters:
+        - StripPrefix=1
 
 eureka:
   instance:
@@ -20,47 +50,22 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     instance-info-replication-interval-seconds: 30
-    registry-fetch-interval-seconds: 3
     service-url:
       defaultZone: http://boss:16250@${boss-register}:9001/register/eureka/
 
-zuul:
-  routes:
-    auth:
-      path: /auth/**
-      serviceId: Boss-Auth
-      sensitiveHeaders: "*"
-    system:
-      path: /system/**
-      serviceId: Boss-Server-System
-      sensitiveHeaders: "*"
-    test:
-      path: /test/**
-      serviceId: Boss-Server-Test
-      sensitiveHeaders: "*"
-  retryable: true
-  ignored-services: "*"
-  ribbon:
-    eager-load:
-      enabled: true
-  SendErrorFilter:
-    error:
-      disable: true
-
-ribbon:
-  ReadTimeout: 3000
-
-info:
-  app:
-    name: ${spring.application.name}
-    description: "@project.description@"
-    version: "@project.version@"
-
 management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
   endpoint:
     health:
       show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
