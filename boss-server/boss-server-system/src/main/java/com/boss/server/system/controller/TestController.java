@@ -20,22 +20,6 @@ public class TestController {
     @Resource
     private IHelloService helloService;
 
-    @GetMapping("info")
-    public String test() {
-        return "Boss-Server-System";
-    }
-
-    @GetMapping("test2")
-    @PreAuthorize("hasAnyAuthority('user:update')")
-    public String test2() {
-        return "拥有'user:update'权限";
-    }
-
-    @GetMapping("currentUser")
-    public Principal currentUser(Principal principal) {
-        return principal;
-    }
-
     @GetMapping("hello")
     public String hello(String name) {
         log.info("Feign调用boss-server-test的/hello服务");

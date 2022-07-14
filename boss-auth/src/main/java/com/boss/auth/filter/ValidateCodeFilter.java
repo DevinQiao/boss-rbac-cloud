@@ -36,7 +36,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
         String header = httpServletRequest.getHeader("Authorization");
-        String clientId = getClientId(header, httpServletRequest);
+        String clientId = getClientId(header);
 
         RequestMatcher matcher = new AntPathRequestMatcher("/oauth/token", HttpMethod.POST.toString());
         if (matcher.matches(httpServletRequest)
@@ -62,7 +62,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
         bossValidateCodeService.check(key, code);
     }
 
-    private String getClientId(String header, HttpServletRequest request) {
+    private String getClientId(String header) {
         String clientId = "";
         try {
             byte[] base64Token = header.substring(6).getBytes(StandardCharsets.UTF_8);
@@ -74,7 +74,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
                 clientId = new String[]{token.substring(0, delim), token.substring(delim + 1)}[0];
             }
         } catch (Exception ignore) {
-
+            log.error(ignore.getMessage());
         }
         return clientId;
     }

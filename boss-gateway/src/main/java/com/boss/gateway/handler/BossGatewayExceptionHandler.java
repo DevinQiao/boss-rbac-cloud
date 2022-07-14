@@ -25,6 +25,8 @@ import java.util.Map;
 @Slf4j
 public class BossGatewayExceptionHandler extends DefaultErrorWebExceptionHandler {
 
+    public static final String CONNECTION_ERROR = "connection refused";
+
     public BossGatewayExceptionHandler(ErrorAttributes errorAttributes, ResourceProperties resourceProperties, ErrorProperties errorProperties, ApplicationContext applicationContext) {
         super(errorAttributes, resourceProperties, errorProperties, applicationContext);
     }
@@ -41,7 +43,7 @@ public class BossGatewayExceptionHandler extends DefaultErrorWebExceptionHandler
             String serverId = StringUtils.substringAfterLast(error.getMessage(), "Unable to find instance for");
             serverId = StringUtils.replace(serverId, "\"", StringUtils.EMPTY);
             errorMessage = String.format("无法找到%s服务", serverId);
-        } else if (StringUtils.containsIgnoreCase(error.getMessage(), "connection refused")) {
+        } else if (StringUtils.containsIgnoreCase(error.getMessage(), CONNECTION_ERROR)) {
             errorMessage = "目标服务拒绝连接";
         } else if (error instanceof TimeoutException) {
             errorMessage = "访问服务超时";

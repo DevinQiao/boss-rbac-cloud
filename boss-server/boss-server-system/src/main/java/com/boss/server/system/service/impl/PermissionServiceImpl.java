@@ -37,8 +37,8 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionDao, Permission
     public List<PermissionDTO> findPermissionListByRolesId(List<Long> rolesId) {
         List<PermissionPO> permissionPoListByRolesId = baseMapper.findPermissionListByRolesId(rolesId);
         List<PermissionDTO> permissionDTOList = new ArrayList<>();
-        permissionPoListByRolesId.forEach(permissionPO ->
-                permissionDTOList.add(Convert.convert(PermissionDTO.class, permissionPO)));
+        permissionPoListByRolesId.forEach(permissionPo ->
+                permissionDTOList.add(Convert.convert(PermissionDTO.class, permissionPo)));
         return permissionDTOList;
     }
 
@@ -47,8 +47,8 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionDao, Permission
         QueryWrapper<PermissionPO> queryWrapper = new QueryWrapper<>();
         List<PermissionPO> permissionPoList = baseMapper.selectList(queryWrapper);
         List<PermissionDTO> permissionDtos = new ArrayList<>();
-        permissionPoList.forEach(permissionPO ->
-                permissionDtos.add(Convert.convert(PermissionDTO.class, permissionPO)));
+        permissionPoList.forEach(permissionPo ->
+                permissionDtos.add(Convert.convert(PermissionDTO.class, permissionPo)));
         RolePermissionDTO rolePermissionDTO = new RolePermissionDTO();
         rolePermissionDTO.setPermissionList(MenuTree.makeMenuTree(permissionDtos, 0L));
         List<Long> rolesId = new ArrayList<>();

@@ -1,16 +1,16 @@
 package com.boss.common.entity.vo;
 
-import com.boss.common.entity.dto.PermissionDTO;
+import com.boss.common.entity.dto.DeptDTO;
 import lombok.Data;
 
 /**
  * @author DevinJoe
- * @since 2022/6/22
+ * @since 2022/7/14
  */
 @Data
-public class PermissionVO extends PermissionDTO {
+public class DeptVO extends DeptDTO {
 
-    private static final long serialVersionUID = 1686399644332657055L;
+    private static final long serialVersionUID = 8908352045285143283L;
 
     /**
      * 当前页数
@@ -22,7 +22,7 @@ public class PermissionVO extends PermissionDTO {
      */
     private Long pageSize;
 
-    public PermissionVO() {
+    public DeptVO() {
         this.pageNo = 1L;
         this.pageSize = 5L;
     }

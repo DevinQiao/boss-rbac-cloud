@@ -1,4 +1,4 @@
-package com.boss.server.system.fallback;
+package com.boss.server.system.feign.hystrix;
 
 import com.boss.server.system.feign.IHelloService;
 import feign.hystrix.FallbackFactory;

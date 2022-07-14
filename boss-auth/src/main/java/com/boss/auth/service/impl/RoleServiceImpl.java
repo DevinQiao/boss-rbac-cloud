@@ -22,7 +22,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleDao, RolePO> implements Rol
     public List<RoleDTO> findRolesByUserId(Long userId) {
         List<RolePO> rolesByUserId = baseMapper.findRolesByUserId(userId);
         List<RoleDTO> roleDTOList = new ArrayList<>();
-        rolesByUserId.forEach(rolePO -> roleDTOList.add(Convert.convert(RoleDTO.class, rolePO)));
+        rolesByUserId.forEach(rolePo -> roleDTOList.add(Convert.convert(RoleDTO.class, rolePo)));
         return roleDTOList;
     }
 }

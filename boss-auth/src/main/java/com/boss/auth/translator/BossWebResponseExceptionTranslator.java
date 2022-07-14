@@ -18,6 +18,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class BossWebResponseExceptionTranslator implements WebResponseExceptionTranslator {
 
+    public static final String INVALID_REFRESH_TOKEN = "Invalid refresh token";
+    public static final String LOCKED = "locked";
+
     @Override
     public ResponseEntity<?> translate(Exception e) throws Exception {
         ResponseEntity.BodyBuilder status = ResponseEntity.status(HttpStatus.INSUFFICIENT_STORAGE);
@@ -30,12 +33,12 @@ public class BossWebResponseExceptionTranslator implements WebResponseExceptionT
             return status.body(response.message(message.toString()));
         }
         if (e instanceof InvalidGrantException) {
-            if (StringUtils.containsIgnoreCase(e.getMessage(), "Invalid refresh token")) {
+            if (StringUtils.containsIgnoreCase(e.getMessage(), INVALID_REFRESH_TOKEN)) {
                 message.setLength(0);
                 message.append("refresh token无效");
                 return status.body(response.message(message.toString()));
             }
-            if (StringUtils.containsIgnoreCase(e.getMessage(), "locked")) {
+            if (StringUtils.containsIgnoreCase(e.getMessage(), LOCKED)) {
                 message.setLength(0);
                 message.append("用户已被锁定，请联系管理员");
                 return status.body(response.message(message.toString()));

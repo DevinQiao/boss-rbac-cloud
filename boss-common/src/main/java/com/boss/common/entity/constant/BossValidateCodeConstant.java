@@ -6,6 +6,8 @@ package com.boss.common.entity.constant;
  */
 public class BossValidateCodeConstant {
 
+    private BossValidateCodeConstant() {}
+
     public static final String GIF = "gif";
 
     public static final String PNG = "png";

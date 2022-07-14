@@ -1,7 +1,7 @@
 package com.boss.server.system.feign;
 
 import com.boss.common.entity.constant.BossServerConstant;
-import com.boss.server.system.fallback.HelloServiceFallback;
+import com.boss.server.system.feign.hystrix.HelloServiceFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

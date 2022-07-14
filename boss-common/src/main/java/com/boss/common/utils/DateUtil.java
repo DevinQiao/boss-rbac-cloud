@@ -15,7 +15,8 @@ import java.util.Locale;
  */
 public class DateUtil {
 
-    private DateUtil() {}
+    private DateUtil() {
+    }
 
     public static final String FULL_TIME_PATTERN = "yyyyMMddHHmmss";
 
@@ -23,7 +24,7 @@ public class DateUtil {
 
     public static final String CST_TIME_PATTERN = "EEE MMM dd HH:mm:ss zzz yyyy";
 
-    public static  String formatFullTime(LocalDateTime localDateTime) {
+    public static String formatFullTime(LocalDateTime localDateTime) {
         return formatFullTime(localDateTime, FULL_TIME_PATTERN);
     }
 
@@ -37,7 +38,7 @@ public class DateUtil {
         return simpleDateFormat.format(date);
     }
 
-    public static String formatCSTTime(String date, String format) throws ParseException {
+    public static String formatCstTime(String date, String format) throws ParseException {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(CST_TIME_PATTERN, Locale.US);
         Date usDate = simpleDateFormat.parse(date);
         return DateUtil.getDateFormat(usDate, format);
