@@ -1,0 +1,92 @@
+version: '3'
+
+services:
+  nacos-server:
+    image: nacos/nacos-server:latest
+    container_name: nacos-server
+    volumes:
+      - "/cloud/log:/log"
+    environment:
+      - MODE=standalone
+    ports:
+      - 9001:9001
+  cloud-boss-monitor-admin:
+    image: cloud-boss-monitor-admin:latest
+    container_name: cloud-boss-monitor-admin
+    volumes:
+      - "/cloud/log:/log"
+    command:
+      - "--nacos.url=121.41.53.139"
+      - "--logstash.url=121.41.53.139"
+    ports:
+      - 9470:9470
+  cloud-boss-gateway:
+    image: cloud-boss-gateway:latest
+    container_name: cloud-boss-gateway
+    depends_on:
+      - nacos-server
+    volumes:
+      - "/cloud/log:/log"
+    command:
+      - "--nacos.url=121.41.53.139"
+      - "--boss-monitor-admin=121.41.53.139"
+      - "--logstash.url=121.41.53.139"
+    ports:
+      - 9370:9370
+  cloud-boss-auth:
+    image: cloud-boss-auth:latest
+    container_name: cloud-boss-auth
+    depends_on:
+      - nacos-server
+    volumes:
+      - "/cloud/log:/log"
+    command:
+      - "--mysql.url=121.41.53.139"
+      - "--redis.url=121.41.53.139"
+      - "--nacos.url=121.41.53.139"
+      - "--logstash.url=121.41.53.139"
+      - "--boss-monitor-admin=121.41.53.139"
+  cloud-boss-server-system:
+    image: cloud-boss-server-system:latest
+    container_name: cloud-boss-server-system
+    depends_on:
+      - nacos-server
+    volumes:
+      - "/cloud/log:/log"
+    command:
+      - "--mysql.url=121.41.53.139"
+      - "--rabbitmq.url=121.41.53.139"
+      - "--nacos.url=121.41.53.139"
+      - "--logstash.url=121.41.53.139"
+      - "--boss-monitor-admin=121.41.53.139"
+      - "--boss-gateway=121.41.53.139"
+  cloud-boss-server-test:
+    image: cloud-boss-server-test:latest
+    container_name: cloud-boss-server-test
+    depends_on:
+      - nacos-server
+    volumes:
+      - "/cloud/log:/log"
+    command:
+      - "--mysql.url=121.41.53.139"
+      - "--rabbitmq.url=121.41.53.139"
+      - "--nacos.url=121.41.53.139"
+      - "--logstash.url=121.41.53.139"
+      - "--boss-monitor-admin=121.41.53.139"
+      - "--boss-gateway=121.41.53.139"
+  cloud-zipkin-server:
+    image: cloud-zipkin-server
+    container_name: cloud-zipkin-server
+    command:
+      - "--server.port=8402"
+      - "--zipkin.storage.type=mysql"
+      - "--zipkin.storage.mysql.db=boss_rbac"
+      - "--zipkin.storage.mysql.username=root"
+      - "--zipkin.storage.mysql.password=16250"
+      - "--zipkin.storage.mysql.host=121.41.53.139"
+      - "--zipkin.storage.mysql.port=3306"
+      - "--zipkin.collector.rabbitmq.addresses=121.41.53.139:5672"
+      - "--zipkin.collector.rabbitmq.username=boss"
+      - "--zipkin.collector.rabbitmq.password=16250"
+    ports:
+      - 8402:8402
