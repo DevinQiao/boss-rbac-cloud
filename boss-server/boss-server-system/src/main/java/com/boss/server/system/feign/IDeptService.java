@@ -17,6 +17,7 @@ public interface IDeptService {
 
     /**
      * 分页查询部门信息Feign接口
+     *
      * @param deptVO
      * @return
      */
@@ -25,6 +26,7 @@ public interface IDeptService {
 
     /**
      * 添加部门Feign接口
+     *
      * @param deptVO
      * @return
      */
@@ -33,6 +35,7 @@ public interface IDeptService {
 
     /**
      * 修改部门Feign接口
+     *
      * @param deptVO
      * @return
      */
@@ -41,9 +44,11 @@ public interface IDeptService {
 
     /**
      * 删除部门Feign接口
+     *
      * @param id
      * @return
      */
     @DeleteMapping("delete/{id}")
     BossResponse delete(@PathVariable(value = "id") Long id);
+
 }

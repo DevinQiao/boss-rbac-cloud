@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author DevinJoe
@@ -142,6 +142,5 @@ public class UserPO implements Serializable {
      */
     @TableField(fill = FieldFill.UPDATE)
     private Date updateTime;
-
 
 }

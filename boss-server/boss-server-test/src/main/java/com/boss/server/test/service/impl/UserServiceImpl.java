@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author DevinJoe
@@ -29,4 +29,5 @@ public class UserServiceImpl extends ServiceImpl<UserDao, UserPO> implements IUs
         UserPO userPo = baseMapper.selectOne(queryWrapper);
         return Convert.convert(UserDTO.class, userPo);
     }
+
 }

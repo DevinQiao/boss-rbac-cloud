@@ -29,4 +29,5 @@ public class BossStatusCodeConstant {
      * 没有权限状态码
      */
     public static final int NO_AUTH = 700;
+
 }

@@ -6,7 +6,7 @@ import com.boss.common.entity.po.UserPO;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author DevinJoe
@@ -21,4 +21,5 @@ public interface IUserService extends IService<UserPO> {
      * @return UserDTO
      */
     UserDTO findUserByUserName(String username);
+
 }

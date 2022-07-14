@@ -26,4 +26,5 @@ public class PermissionVO extends PermissionDTO {
         this.pageNo = 1L;
         this.pageSize = 5L;
     }
+
 }

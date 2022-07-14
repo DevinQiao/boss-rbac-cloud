@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author DevinJoe
@@ -54,4 +54,5 @@ public class RoleDTO implements Serializable {
      * 角色拥有的权限
      */
     private List<RouterVO> routerVOList;
+
 }

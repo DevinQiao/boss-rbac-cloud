@@ -23,4 +23,5 @@ public class BossAuthExceptionEntryPoint implements AuthenticationEntryPoint {
         BossUtil.makeResponse(httpServletResponse, BossMediaTypeConstant.APPLICATION_JSON_UTF8_VALUE,
                 HttpServletResponse.SC_UNAUTHORIZED, response.message("token无效"));
     }
+
 }

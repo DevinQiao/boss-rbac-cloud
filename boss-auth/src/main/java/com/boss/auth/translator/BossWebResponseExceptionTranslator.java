@@ -49,4 +49,5 @@ public class BossWebResponseExceptionTranslator implements WebResponseExceptionT
         }
         return status.body(response.message(message.toString()));
     }
+
 }

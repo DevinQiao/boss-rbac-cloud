@@ -33,4 +33,5 @@ public class GlobalExceptionHandler extends BaseExceptionHandler {
         log.error(message);
         return new BossResponse().message(message);
     }
+
 }

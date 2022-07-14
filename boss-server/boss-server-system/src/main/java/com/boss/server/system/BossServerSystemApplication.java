@@ -18,7 +18,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 public class BossServerSystemApplication {
 
     public static void main(String[] args) {
-        System.setProperty("nacos.logging.default.config.enabled","false");
+        System.setProperty("nacos.logging.default.config.enabled", "false");
 
         SpringApplication.run(BossServerSystemApplication.class, args);
     }

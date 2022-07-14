@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author DevinJoe
@@ -19,6 +19,7 @@ public interface IRoleService extends IService<RolePO> {
 
     /**
      * 通过用户ID获得用户的角色信息
+     *
      * @param userId
      * @return
      */
@@ -26,6 +27,7 @@ public interface IRoleService extends IService<RolePO> {
 
     /**
      * 分页查询角色信息
+     *
      * @param rolePage
      * @param roleDTO
      * @return
@@ -34,6 +36,7 @@ public interface IRoleService extends IService<RolePO> {
 
     /**
      * 通过角色名称查询角色信息
+     *
      * @param roleName
      * @return
      */
@@ -41,6 +44,7 @@ public interface IRoleService extends IService<RolePO> {
 
     /**
      * 通过角色编码查询角色信息
+     *
      * @param roleCode
      * @return
      */
@@ -48,6 +52,7 @@ public interface IRoleService extends IService<RolePO> {
 
     /**
      * 传入DTO对象，封装通用的save方法
+     *
      * @param roleDTO
      * @return
      */
@@ -55,6 +60,7 @@ public interface IRoleService extends IService<RolePO> {
 
     /**
      * 传入DTO对象，封装通用的updateById方法
+     *
      * @param roleDTO
      * @return
      */
@@ -62,6 +68,7 @@ public interface IRoleService extends IService<RolePO> {
 
     /**
      * 封装通用的removeById方法，删除前先判断角色是否被分配给用户
+     *
      * @param id
      * @return
      */
@@ -69,8 +76,10 @@ public interface IRoleService extends IService<RolePO> {
 
     /**
      * 为角色分配权限
+     *
      * @param roleDTO
      * @return
      */
     boolean assignRolePermission(RoleDTO roleDTO);
+
 }

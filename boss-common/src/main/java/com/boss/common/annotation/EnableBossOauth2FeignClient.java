@@ -14,4 +14,5 @@ import java.lang.annotation.*;
 @Documented
 @Import(BossOAuth2FeignConfigure.class)
 public @interface EnableBossOauth2FeignClient {
+
 }

@@ -20,4 +20,5 @@ public class HelloServiceFallback implements FallbackFactory<IHelloService> {
             return "调用出错";
         };
     }
+
 }

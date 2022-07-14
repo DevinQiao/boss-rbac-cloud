@@ -43,7 +43,7 @@ public class BossValidateCodeServiceImpl implements ValidateCodeService {
         setHeader(response, code.getType());
 
         Captcha captcha = createCaptcha(code);
-        redisService.set(BossValidateCodeConstant.CODE_PREFIX + key, StringUtils.lowerCase(captcha.text()),code.getTime());
+        redisService.set(BossValidateCodeConstant.CODE_PREFIX + key, StringUtils.lowerCase(captcha.text()), code.getTime());
         captcha.out(response.getOutputStream());
     }
 
@@ -82,4 +82,5 @@ public class BossValidateCodeServiceImpl implements ValidateCodeService {
         response.setHeader(HttpHeaders.CACHE_CONTROL, "no-cache");
         response.setDateHeader(HttpHeaders.EXPIRES, 0L);
     }
+
 }

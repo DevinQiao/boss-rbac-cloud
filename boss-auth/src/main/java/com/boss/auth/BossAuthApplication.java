@@ -16,7 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BossAuthApplication {
 
     public static void main(String[] args) {
-        System.setProperty("nacos.logging.default.config.enabled","false");
+        System.setProperty("nacos.logging.default.config.enabled", "false");
 
         SpringApplication.run(BossAuthApplication.class, args);
     }

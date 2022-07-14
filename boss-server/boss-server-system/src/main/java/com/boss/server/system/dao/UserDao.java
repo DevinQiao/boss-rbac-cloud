@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author DevinJoe
@@ -19,6 +19,7 @@ public interface UserDao extends BaseMapper<UserPO> {
 
     /**
      * 删除用户角色关系
+     *
      * @param userId
      */
     @Delete("delete from t_user_role where user_id = #{userId}")
@@ -26,9 +27,11 @@ public interface UserDao extends BaseMapper<UserPO> {
 
     /**
      * 为用户分配角色
+     *
      * @param userId
      * @param roleIds
      * @return
      */
     int assignUserRole(@Param("userId") Long userId, @Param("roleIds") List<Long> roleIds);
+
 }

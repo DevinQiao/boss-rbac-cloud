@@ -28,16 +28,16 @@ public class ActionLog {
 
     /**
      * 服务请求参数
+     *
      * @param point
      * @param bossLog
      */
     @Before(value = "@annotation(bossLog)")
     public void before(JoinPoint point, BossLog bossLog) {
         Object[] args = point.getArgs();
-        List<Object> argsList=new ArrayList<>();
+        List<Object> argsList = new ArrayList<>();
         for (int i = 0; i < args.length; i++) {
-            if (args[i] instanceof HttpServletRequest || args[i] instanceof HttpServletResponse || args[i] instanceof BindingResult)
-            {
+            if (args[i] instanceof HttpServletRequest || args[i] instanceof HttpServletResponse || args[i] instanceof BindingResult) {
                 continue;
             }
             argsList.add(args[i]);
@@ -47,6 +47,7 @@ public class ActionLog {
 
     /**
      * 服务运行时间
+     *
      * @param point
      * @param bossLog
      * @return
@@ -69,6 +70,7 @@ public class ActionLog {
 
     /**
      * 服务返回结果
+     *
      * @param point
      * @param bossLog
      * @param rvt
@@ -77,5 +79,6 @@ public class ActionLog {
     public void afterReturning(JoinPoint point, BossLog bossLog, Object rvt) {
         log.info("服务{}调用结束，response:{}", bossLog.action(), JSON.toJSONString(rvt));
     }
+
 }
 

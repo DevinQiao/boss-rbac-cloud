@@ -77,4 +77,5 @@ public class BossWebConfigure {
                 new AuthorizationScope(swagger.getScope(), "")
         };
     }
+
 }

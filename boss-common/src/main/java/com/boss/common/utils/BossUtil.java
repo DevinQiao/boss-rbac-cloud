@@ -11,10 +11,12 @@ import java.io.IOException;
  */
 public class BossUtil {
 
-    private BossUtil() {}
+    private BossUtil() {
+    }
 
     /**
      * 设置响应
+     *
      * @param response
      * @param contentType
      * @param status
@@ -27,4 +29,5 @@ public class BossUtil {
         response.getOutputStream()
                 .write((JSON.toJSONString(value)).getBytes());
     }
+
 }

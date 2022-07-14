@@ -6,7 +6,8 @@ package com.boss.common.entity.constant;
  */
 public class BossGatewayConstant {
 
-    private BossGatewayConstant() {}
+    private BossGatewayConstant() {
+    }
 
     /**
      * Gateway请求头token名称
@@ -17,4 +18,5 @@ public class BossGatewayConstant {
      * Gateway请求头TOKEN值
      */
     public static final String GATEWAY_TOKEN_VALUE = "boss:gateway:16250";
+
 }

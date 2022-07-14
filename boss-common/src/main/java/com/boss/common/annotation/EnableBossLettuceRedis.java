@@ -14,4 +14,5 @@ import java.lang.annotation.*;
 @Documented
 @Import(BossLettuceRedisConfigure.class)
 public @interface EnableBossLettuceRedis {
+
 }

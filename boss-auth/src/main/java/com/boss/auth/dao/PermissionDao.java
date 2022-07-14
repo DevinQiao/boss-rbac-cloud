@@ -14,8 +14,10 @@ public interface PermissionDao extends BaseMapper<PermissionPO> {
 
     /**
      * 通过角色ID集合获得权限集合
+     *
      * @param rolesId
      * @return
      */
     List<PermissionPO> findPermissionListByRolesId(@Param("rolesId") List<Long> rolesId);
+
 }

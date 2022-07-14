@@ -37,4 +37,5 @@ public class BossSecurityConfigure extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().disable();
     }
+
 }

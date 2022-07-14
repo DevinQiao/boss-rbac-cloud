@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author DevinJoe
@@ -97,4 +97,5 @@ public class RoleServiceImpl extends ServiceImpl<RoleDao, RolePO> implements IRo
         }
         return false;
     }
+
 }

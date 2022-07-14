@@ -46,4 +46,5 @@ public class DeptServiceFallback implements FallbackFactory<IDeptService> {
             }
         };
     }
+
 }

@@ -10,3 +10,6 @@ spring:
         group: DEFAULT_GROUP
         prefix: boss-server-test
         file-extension: yaml
+
+logstash:
+  server-addr: ${logstash.url}:4560

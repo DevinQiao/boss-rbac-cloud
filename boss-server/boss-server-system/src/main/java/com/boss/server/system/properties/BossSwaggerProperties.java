@@ -32,4 +32,5 @@ public class BossSwaggerProperties {
     private String name;
 
     private String scope;
+
 }

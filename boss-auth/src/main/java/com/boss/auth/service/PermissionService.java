@@ -14,8 +14,10 @@ public interface PermissionService extends IService<PermissionPO> {
 
     /**
      * 通过角色ID集合获得权限集合
+     *
      * @param rolesId
      * @return
      */
     List<PermissionDTO> findPermissionListByRolesId(List<Long> rolesId);
+
 }

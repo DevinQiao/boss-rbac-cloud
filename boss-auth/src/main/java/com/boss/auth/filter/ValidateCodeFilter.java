@@ -74,8 +74,8 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
                 clientId = new String[]{token.substring(0, delim), token.substring(delim + 1)}[0];
             }
         } catch (Exception ignore) {
-            log.error(ignore.getMessage());
         }
         return clientId;
     }
+
 }

@@ -46,4 +46,5 @@ public class BossLettuceRedisConfigure {
     public RedisService redisService() {
         return new RedisService();
     }
+
 }

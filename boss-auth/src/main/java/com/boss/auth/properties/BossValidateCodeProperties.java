@@ -41,4 +41,5 @@ public class BossValidateCodeProperties {
      * 3. 纯字母
      */
     private Integer charType = 1;
+
 }

@@ -15,9 +15,11 @@ public interface IHelloService {
 
     /**
      * hello feign
+     *
      * @param name
      * @return
      */
     @GetMapping("hello")
     String hello(@RequestParam("name") String name);
+
 }

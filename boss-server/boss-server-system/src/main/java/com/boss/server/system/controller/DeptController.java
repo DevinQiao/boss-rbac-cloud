@@ -32,7 +32,6 @@ public class DeptController {
         return this.deptService.add(deptVO);
     }
 
-
     @PutMapping("update")
     public BossResponse update(@RequestBody DeptVO deptVO) {
         log.info("Feign调用boss-server-test的/dept/update服务");
@@ -44,4 +43,5 @@ public class DeptController {
         log.info("Feign调用boss-server-test的/dept/delete服务");
         return this.deptService.delete(id);
     }
+
 }

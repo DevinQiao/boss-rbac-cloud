@@ -14,8 +14,10 @@ public interface RoleService extends IService<RolePO> {
 
     /**
      * 通过用户ID获得用户的角色信息
+     *
      * @param userId
      * @return
      */
     List<RoleDTO> findRolesByUserId(Long userId);
+
 }

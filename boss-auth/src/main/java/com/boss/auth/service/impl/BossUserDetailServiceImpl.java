@@ -49,10 +49,11 @@ public class BossUserDetailServiceImpl implements UserDetailsService {
                 .map(PermissionDTO::getCode)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
-        String [] strings = codeList.toArray(new String[codeList.size()]);
+        String[] strings = codeList.toArray(new String[codeList.size()]);
         List<GrantedAuthority> authorityList = AuthorityUtils.createAuthorityList(strings);
         userDto.setAuthorities(authorityList);
         userDto.setPermissionDTOList(permissionDTOList);
         return userDto;
     }
+
 }

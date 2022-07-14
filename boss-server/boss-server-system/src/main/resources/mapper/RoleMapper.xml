@@ -4,12 +4,12 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.boss.common.entity.po.RolePO">
-        <id column="id" property="id" />
-        <result column="role_code" property="roleCode" />
-        <result column="role_name" property="roleName" />
-        <result column="introduction" property="introduction" />
-        <result column="version" property="version" />
-        <result column="is_deleted" property="deleted" />
+        <id column="id" property="id"/>
+        <result column="role_code" property="roleCode"/>
+        <result column="role_name" property="roleName"/>
+        <result column="introduction" property="introduction"/>
+        <result column="version" property="version"/>
+        <result column="is_deleted" property="deleted"/>
     </resultMap>
 
     <insert id="assignRolePermission">

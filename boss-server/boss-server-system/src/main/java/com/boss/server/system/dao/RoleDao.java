@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author DevinJoe
@@ -20,6 +20,7 @@ public interface RoleDao extends BaseMapper<RolePO> {
 
     /**
      * 通过用户ID获得用户的角色信息
+     *
      * @param userId
      * @return
      */
@@ -27,6 +28,7 @@ public interface RoleDao extends BaseMapper<RolePO> {
 
     /**
      * 通过角色ID查询用户角色关系表中该角色是否被分配给用户
+     *
      * @param roleId
      * @return
      */
@@ -35,6 +37,7 @@ public interface RoleDao extends BaseMapper<RolePO> {
 
     /**
      * 删除角色权限关系
+     *
      * @param roleId
      */
     @Delete("delete from t_role_permission where role_id = #{roleId}")
@@ -42,9 +45,11 @@ public interface RoleDao extends BaseMapper<RolePO> {
 
     /**
      * 为角色分配权限
+     *
      * @param roleId
      * @param permissionIds
      * @return
      */
     int assignRolePermission(@Param("roleId") Long roleId, @Param("permissionIds") List<Long> permissionIds);
+
 }

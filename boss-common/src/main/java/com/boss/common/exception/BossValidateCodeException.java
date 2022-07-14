@@ -11,4 +11,5 @@ public class BossValidateCodeException extends Exception {
     public BossValidateCodeException(String message) {
         super(message);
     }
+
 }

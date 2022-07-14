@@ -6,11 +6,13 @@ package com.boss.common.entity.constant;
  */
 public class BossValidateCodeConstant {
 
-    private BossValidateCodeConstant() {}
+    private BossValidateCodeConstant() {
+    }
 
     public static final String GIF = "gif";
 
     public static final String PNG = "png";
 
     public static final String CODE_PREFIX = "boss.captcha.";
+
 }

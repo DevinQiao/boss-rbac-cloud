@@ -26,4 +26,5 @@ public class RolePermissionVO {
      * 已有权限列表
      */
     private Object[] checkedList;
+
 }

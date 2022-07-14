@@ -25,4 +25,5 @@ public class RoleServiceImpl extends ServiceImpl<RoleDao, RolePO> implements Rol
         rolesByUserId.forEach(rolePo -> roleDTOList.add(Convert.convert(RoleDTO.class, rolePo)));
         return roleDTOList;
     }
+
 }

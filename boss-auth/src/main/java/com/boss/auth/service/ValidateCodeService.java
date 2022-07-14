@@ -14,6 +14,7 @@ public interface ValidateCodeService {
 
     /**
      * 生成验证码
+     *
      * @param request
      * @param response
      * @throws IOException
@@ -23,9 +24,11 @@ public interface ValidateCodeService {
 
     /**
      * 校验验证码
+     *
      * @param key
      * @param value
      * @throws BossValidateCodeException
      */
     void check(String key, String value) throws BossValidateCodeException;
+
 }

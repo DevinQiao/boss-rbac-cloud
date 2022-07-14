@@ -14,4 +14,5 @@ import java.lang.annotation.*;
 @Documented
 @Import(BossCloudApplicationSelector.class)
 public @interface BossCloudApplication {
+
 }

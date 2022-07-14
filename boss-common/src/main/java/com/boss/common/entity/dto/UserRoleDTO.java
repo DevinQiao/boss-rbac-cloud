@@ -20,4 +20,5 @@ public class UserRoleDTO {
      * 角色ID
      */
     private List<Long> roleIds;
+
 }

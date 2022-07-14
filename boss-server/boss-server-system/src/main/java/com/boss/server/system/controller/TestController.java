@@ -25,4 +25,5 @@ public class TestController {
         log.info("Feign调用boss-server-test的/hello服务");
         return this.helloService.hello(name);
     }
+
 }

@@ -16,4 +16,5 @@ public class BossClientsProperties {
     private String grantType = "password, authorization_code, refresh_token";
 
     private String scope = "all";
+
 }

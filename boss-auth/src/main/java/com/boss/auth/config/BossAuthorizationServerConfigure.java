@@ -99,4 +99,5 @@ public class BossAuthorizationServerConfigure extends AuthorizationServerConfigu
         tokenServices.setRefreshTokenValiditySeconds(authProperties.getRefreshTokenValiditySeconds());
         return tokenServices;
     }
+
 }

@@ -18,4 +18,5 @@ public class BossServerSystemProperties {
     private String anonUrl;
 
     private BossSwaggerProperties swagger = new BossSwaggerProperties();
+
 }

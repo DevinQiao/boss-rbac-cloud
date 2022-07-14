@@ -19,7 +19,7 @@ import java.util.List;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author DevinJoe
@@ -30,6 +30,7 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionDao, Permission
 
     /**
      * 通过角色ID集合获得权限集合
+     *
      * @param rolesId
      * @return
      */
@@ -101,4 +102,5 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionDao, Permission
     public boolean removePermission(Long id) {
         return this.removeById(id);
     }
+
 }

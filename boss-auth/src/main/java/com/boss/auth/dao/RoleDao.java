@@ -13,8 +13,10 @@ public interface RoleDao extends BaseMapper<RolePO> {
 
     /**
      * 通过用户ID获得用户的角色信息
+     *
      * @param userId
      * @return
      */
     List<RolePO> findRolesByUserId(Long userId);
+
 }

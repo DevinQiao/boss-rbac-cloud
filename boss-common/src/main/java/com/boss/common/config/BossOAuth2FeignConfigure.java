@@ -27,4 +27,5 @@ public class BossOAuth2FeignConfigure {
             }
         };
     }
+
 }

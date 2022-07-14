@@ -14,4 +14,5 @@ import java.lang.annotation.*;
 @Documented
 @Import(BossAuthExceptionConfigure.class)
 public @interface EnableBossAuthExceptionHandler {
+
 }

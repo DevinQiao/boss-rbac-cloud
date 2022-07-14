@@ -26,4 +26,5 @@ public class DeptVO extends DeptDTO {
         this.pageNo = 1L;
         this.pageSize = 5L;
     }
+
 }

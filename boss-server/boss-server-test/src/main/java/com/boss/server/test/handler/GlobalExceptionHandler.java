@@ -12,4 +12,5 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 @ControllerAdvice
 @Order(value = Ordered.HIGHEST_PRECEDENCE)
 public class GlobalExceptionHandler extends BaseExceptionHandler {
+
 }

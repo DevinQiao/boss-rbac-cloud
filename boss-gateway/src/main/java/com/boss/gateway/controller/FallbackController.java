@@ -21,4 +21,5 @@ public class FallbackController {
         String response = String.format("访问%s超时或者服务不可用", name);
         return Mono.just(new BossResponse().message(response));
     }
+
 }

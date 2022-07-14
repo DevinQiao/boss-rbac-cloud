@@ -21,14 +21,15 @@ public class MenuTree {
 
     /**
      * 生成路由
-     * @param menuList  菜单列表
-     * @param pid   父菜单ID
+     *
+     * @param menuList 菜单列表
+     * @param pid      父菜单ID
      * @return
      */
     public static List<RouterVO> makeRouter(List<PermissionDTO> menuList, Long pid) {
         List<RouterVO> routerVOList = new ArrayList<>();
         Optional.ofNullable(menuList).orElse(new ArrayList<>())
-                .stream().filter(item -> item!=null && item.getParentId().equals(pid))
+                .stream().filter(item -> item != null && item.getParentId().equals(pid))
                 .forEach(item -> {
                     RouterVO routerVo = new RouterVO();
                     routerVo.setId(item.getId());
@@ -51,6 +52,7 @@ public class MenuTree {
 
     /**
      * 生成菜单树
+     *
      * @param menuList
      * @param pid
      * @return
@@ -58,7 +60,7 @@ public class MenuTree {
     public static List<PermissionDTO> makeMenuTree(List<PermissionDTO> menuList, Long pid) {
         List<PermissionDTO> permissionDTOList = new ArrayList<>();
         Optional.ofNullable(menuList).orElse(new ArrayList<>())
-                .stream().filter(item -> item!=null && item.getParentId().equals(pid))
+                .stream().filter(item -> item != null && item.getParentId().equals(pid))
                 .forEach(item -> {
                     PermissionDTO permissionDto = new PermissionDTO();
                     BeanUtils.copyProperties(item, permissionDto);
@@ -68,4 +70,5 @@ public class MenuTree {
                 });
         return permissionDTOList;
     }
+
 }

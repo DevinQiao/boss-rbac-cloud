@@ -26,4 +26,5 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionDao, Permission
                 permissionDTOList.add(Convert.convert(PermissionDTO.class, permissionPo)));
         return permissionDTOList;
     }
+
 }

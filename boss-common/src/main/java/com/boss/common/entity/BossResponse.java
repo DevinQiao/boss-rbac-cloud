@@ -42,4 +42,5 @@ public class BossResponse extends HashMap<String, Object> {
     public Integer getStatusCode() {
         return (Integer) get("statusCode");
     }
+
 }

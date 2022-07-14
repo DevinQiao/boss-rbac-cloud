@@ -14,4 +14,5 @@ public class UserRoleVO extends UserRoleDTO {
      * 用户名称
      */
     private String username;
+
 }

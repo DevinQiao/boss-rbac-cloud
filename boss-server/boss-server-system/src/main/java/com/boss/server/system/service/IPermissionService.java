@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author DevinJoe
@@ -20,6 +20,7 @@ public interface IPermissionService extends IService<PermissionPO> {
 
     /**
      * 通过角色ID集合获得权限集合
+     *
      * @param rolesId
      * @return
      */
@@ -27,6 +28,7 @@ public interface IPermissionService extends IService<PermissionPO> {
 
     /**
      * 生成角色对应的已选权限树
+     *
      * @param roleId
      * @return
      */
@@ -34,6 +36,7 @@ public interface IPermissionService extends IService<PermissionPO> {
 
     /**
      * 分页查询权限信息
+     *
      * @param permissionPage
      * @return
      */
@@ -41,6 +44,7 @@ public interface IPermissionService extends IService<PermissionPO> {
 
     /**
      * 通过权限编码查询权限
+     *
      * @param code
      * @return
      */
@@ -48,6 +52,7 @@ public interface IPermissionService extends IService<PermissionPO> {
 
     /**
      * 传入DTO对象，封装通用的save方法
+     *
      * @param permissionDTO
      * @return
      */
@@ -55,6 +60,7 @@ public interface IPermissionService extends IService<PermissionPO> {
 
     /**
      * 传入DTO对象，封装框架提供的updateById方法
+     *
      * @param permissionDTO
      * @return
      */
@@ -62,6 +68,7 @@ public interface IPermissionService extends IService<PermissionPO> {
 
     /**
      * 判断权限是否有子权限
+     *
      * @param id
      * @return
      */
@@ -69,6 +76,7 @@ public interface IPermissionService extends IService<PermissionPO> {
 
     /**
      * 判断权限是否有被分配给角色
+     *
      * @param id
      * @return
      */
@@ -76,8 +84,10 @@ public interface IPermissionService extends IService<PermissionPO> {
 
     /**
      * 删除权限
+     *
      * @param id
      * @return
      */
     boolean removePermission(Long id);
+
 }

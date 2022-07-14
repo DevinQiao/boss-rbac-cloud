@@ -38,4 +38,5 @@ public class DeptServiceImpl extends ServiceImpl<DeptDao, DeptPO> implements IDe
         DeptPO deptPo = Convert.convert(DeptPO.class, deptDto);
         return this.updateById(deptPo);
     }
+
 }

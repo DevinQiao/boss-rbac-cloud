@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author DevinJoe
@@ -37,7 +37,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao, UserPO> implements IUs
     @Override
     public Object findUserListByPage(IPage<UserPO> userPage, UserDTO userDto) {
         QueryWrapper<UserPO> queryWrapper = new QueryWrapper<>();
-        return baseMapper.selectPage(userPage,queryWrapper);
+        return baseMapper.selectPage(userPage, queryWrapper);
     }
 
     @Override
@@ -63,4 +63,5 @@ public class UserServiceImpl extends ServiceImpl<UserDao, UserPO> implements IUs
         }
         return false;
     }
+
 }

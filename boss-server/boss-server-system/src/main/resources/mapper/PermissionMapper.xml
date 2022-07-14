@@ -23,30 +23,30 @@
 
     <select id="findPermissionListByRolesId" resultType="com.boss.common.entity.po.PermissionPO">
         SELECT DISTINCT
-            p.id,
-            p.title,
-            p.parent_id,
-            p.parent_name,
-            p.`code`,
-            p.path,
-            p.`name`,
-            p.redirect,
-            p.always_show,
-            p.url,
-            p.type,
-            p.icon,
-            p.introduction,
-            p.version,
-            p.is_deleted
+        p.id,
+        p.title,
+        p.parent_id,
+        p.parent_name,
+        p.`code`,
+        p.path,
+        p.`name`,
+        p.redirect,
+        p.always_show,
+        p.url,
+        p.type,
+        p.icon,
+        p.introduction,
+        p.version,
+        p.is_deleted
         FROM
-            t_permission p
-            LEFT JOIN t_role_permission rp ON p.id = rp.permission_Id
+        t_permission p
+        LEFT JOIN t_role_permission rp ON p.id = rp.permission_Id
         <where>
             <foreach collection="rolesId" item="roleId" open="rp.role_Id in (" separator="," close=")">
                 #{roleId}
             </foreach>
         </where>
         ORDER BY
-            p.id
+        p.id
     </select>
 </mapper>

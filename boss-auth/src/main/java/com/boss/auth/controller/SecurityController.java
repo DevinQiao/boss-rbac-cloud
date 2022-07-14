@@ -49,4 +49,5 @@ public class SecurityController {
     public void captcha(HttpServletRequest request, HttpServletResponse response) throws IOException, BossValidateCodeException {
         validateCodeService.create(request, response);
     }
+
 }

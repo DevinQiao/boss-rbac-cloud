@@ -8,3 +8,6 @@ spring:
         group: DEFAULT_GROUP
         prefix: boss-monitor-admin
         file-extension: yaml
+
+logstash:
+  server-addr: ${logstash.url}:4560

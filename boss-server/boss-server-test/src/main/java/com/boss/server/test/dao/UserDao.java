@@ -5,11 +5,12 @@ import com.boss.common.entity.po.UserPO;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author DevinJoe
  * @since 2022-06-12
  */
 public interface UserDao extends BaseMapper<UserPO> {
+
 }

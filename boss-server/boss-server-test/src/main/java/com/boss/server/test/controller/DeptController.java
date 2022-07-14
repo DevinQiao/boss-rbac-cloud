@@ -1,6 +1,5 @@
 package com.boss.server.test.controller;
 
-
 import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -65,5 +64,6 @@ public class DeptController {
         }
         return new BossResponse().statusCode(BossStatusCodeConstant.ERROR).message("部门删除失败");
     }
+
 }
 

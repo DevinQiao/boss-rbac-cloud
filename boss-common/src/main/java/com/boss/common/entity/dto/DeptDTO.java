@@ -31,4 +31,5 @@ public class DeptDTO implements Serializable {
      * 排序
      */
     private Double orderNum;
+
 }

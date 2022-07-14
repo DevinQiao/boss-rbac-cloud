@@ -6,7 +6,8 @@ package com.boss.common.entity.constant;
  */
 public class BossServerConstant {
 
-    private BossServerConstant(){}
+    private BossServerConstant() {
+    }
 
     public static final String BOSS_RBAC_CLOUD = "Boss-RBAC-Cloud";
 
@@ -23,4 +24,5 @@ public class BossServerConstant {
     public static final String BOSS_SERVER_SYSTEM = "Boss-Server-System";
 
     public static final String BOSS_SERVER_TEST = "Boss-Server-Test";
+
 }

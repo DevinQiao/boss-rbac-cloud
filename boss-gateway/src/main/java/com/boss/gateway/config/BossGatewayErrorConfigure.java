@@ -32,7 +32,7 @@ public class BossGatewayErrorConfigure {
 
     public BossGatewayErrorConfigure(ServerProperties serverProperties, ResourceProperties resourceProperties,
                                      ObjectProvider<List<ViewResolver>> viewResolversProvider,
-                                     ServerCodecConfigurer serverCodecConfigurer, ApplicationContext applicationContext)  {
+                                     ServerCodecConfigurer serverCodecConfigurer, ApplicationContext applicationContext) {
         this.serverProperties = serverProperties;
         this.applicationContext = applicationContext;
         this.resourceProperties = resourceProperties;
@@ -51,4 +51,5 @@ public class BossGatewayErrorConfigure {
         exceptionHandler.setMessageReaders(this.serverCodecConfigurer.getReaders());
         return exceptionHandler;
     }
+
 }

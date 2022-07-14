@@ -22,4 +22,5 @@ public class BossAuthExceptionConfigure {
     public BossAuthExceptionEntryPoint authExceptionEntryPoint() {
         return new BossAuthExceptionEntryPoint();
     }
+
 }

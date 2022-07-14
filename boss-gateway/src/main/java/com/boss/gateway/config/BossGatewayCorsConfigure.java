@@ -25,4 +25,5 @@ public class BossGatewayCorsConfigure {
         source.registerCorsConfiguration("/**", cors);
         return new CorsWebFilter(source);
     }
+
 }

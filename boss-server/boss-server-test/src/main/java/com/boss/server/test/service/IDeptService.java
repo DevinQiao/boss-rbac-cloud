@@ -17,6 +17,7 @@ public interface IDeptService extends IService<DeptPO> {
 
     /**
      * 分页查询部门信息
+     *
      * @param deptPage
      * @param deptDto
      * @return
@@ -25,6 +26,7 @@ public interface IDeptService extends IService<DeptPO> {
 
     /**
      * 传入DTO对象，封装通用的save方法
+     *
      * @param deptDto
      * @return
      */
@@ -32,8 +34,10 @@ public interface IDeptService extends IService<DeptPO> {
 
     /**
      * 传入DTO对象，封装通用的updateById方法
+     *
      * @param deptDto
      * @return
      */
     boolean updateById(DeptDTO deptDto);
+
 }

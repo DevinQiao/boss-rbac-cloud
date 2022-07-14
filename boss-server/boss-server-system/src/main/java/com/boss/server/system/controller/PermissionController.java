@@ -19,7 +19,7 @@ import javax.validation.Valid;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author DevinJoe
@@ -35,6 +35,7 @@ public class PermissionController {
 
     /**
      * 分页查询权限信息
+     *
      * @param permissionVO
      * @return
      */
@@ -49,6 +50,7 @@ public class PermissionController {
 
     /**
      * 添加权限
+     *
      * @param permissionVO
      * @return
      */
@@ -71,6 +73,7 @@ public class PermissionController {
 
     /**
      * 修改权限
+     *
      * @param permissionVO
      * @return
      */
@@ -93,6 +96,7 @@ public class PermissionController {
 
     /**
      * 查询权限是否有子权限或者被分配给角色
+     *
      * @param id
      * @return
      */
@@ -112,6 +116,7 @@ public class PermissionController {
 
     /**
      * 删除权限信息
+     *
      * @param id
      * @return
      */
@@ -126,5 +131,6 @@ public class PermissionController {
                     .message("权限删除失败");
         }
     }
+
 }
 

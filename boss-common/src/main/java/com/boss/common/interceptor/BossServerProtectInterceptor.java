@@ -30,4 +30,5 @@ public class BossServerProtectInterceptor implements HandlerInterceptor {
             return false;
         }
     }
+
 }

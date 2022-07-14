@@ -79,4 +79,5 @@ public class BossGatewaySentinelConfigure {
         );
         GatewayRuleManager.loadRules(rules);
     }
+
 }

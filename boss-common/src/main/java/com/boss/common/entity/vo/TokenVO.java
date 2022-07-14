@@ -22,4 +22,5 @@ public class TokenVO {
      * token
      */
     private String token;
+
 }

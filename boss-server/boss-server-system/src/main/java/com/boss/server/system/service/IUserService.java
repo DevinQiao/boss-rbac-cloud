@@ -8,7 +8,7 @@ import com.boss.common.entity.po.UserPO;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author DevinJoe
@@ -18,6 +18,7 @@ public interface IUserService extends IService<UserPO> {
 
     /**
      * 通过用户名获得用户信息
+     *
      * @param username 用户名
      * @return UserDTO
      */
@@ -25,14 +26,16 @@ public interface IUserService extends IService<UserPO> {
 
     /**
      * 分页查询用户信息
+     *
      * @param userPage 分页泛型
-     * @param userDto 用户DTO对象
+     * @param userDto  用户DTO对象
      * @return Object
      */
     Object findUserListByPage(IPage<UserPO> userPage, UserDTO userDto);
 
     /**
      * 传入DTO对象，封装通用的save方法
+     *
      * @param userDTO 用户DTO对象
      * @return boolean
      */
@@ -40,6 +43,7 @@ public interface IUserService extends IService<UserPO> {
 
     /**
      * 传入DTO对象，封装通用的updateById方法
+     *
      * @param userDTO 用户DTO对象
      * @return boolean
      */
@@ -47,8 +51,10 @@ public interface IUserService extends IService<UserPO> {
 
     /**
      * 为用户分配角色
+     *
      * @param userRoleDTO 用户角色关系DTO对象
      * @return boolean
      */
     boolean assignUserRole(UserRoleDTO userRoleDTO);
+
 }

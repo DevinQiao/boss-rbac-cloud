@@ -19,7 +19,7 @@ import javax.annotation.Resource;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author DevinJoe
@@ -37,6 +37,7 @@ public class RoleController {
 
     /**
      * 分页查询角色信息
+     *
      * @param roleVO
      * @return
      */
@@ -44,7 +45,7 @@ public class RoleController {
     @BossLog(action = " 分页查询角色信息 ")
     public BossResponse findRoleListByPage(RoleVO roleVO) {
         IPage<RolePO> rolePage = new Page<>(roleVO.getPageNo(), roleVO.getPageSize());
-        RoleDTO roleDTO = Convert.convert(RoleDTO.class ,roleVO);
+        RoleDTO roleDTO = Convert.convert(RoleDTO.class, roleVO);
         return new BossResponse().statusCode(BossStatusCodeConstant.SUCCESS)
                 .data(roleService.findRoleListByPage(rolePage, roleDTO))
                 .message("分页查询角色信息成功");
@@ -52,13 +53,14 @@ public class RoleController {
 
     /**
      * 添加角色
+     *
      * @param roleVO
      * @return
      */
     @PostMapping("/add")
     @BossLog(action = " 添加角色信息 ")
     public BossResponse add(@RequestBody RoleVO roleVO) {
-        RoleDTO roleDTO = Convert.convert(RoleDTO.class ,roleVO);
+        RoleDTO roleDTO = Convert.convert(RoleDTO.class, roleVO);
         if (!ObjectUtils.isEmpty(roleService.findRoleByRoleName(roleDTO.getRoleName()))) {
             return new BossResponse().statusCode(BossStatusCodeConstant.ERROR).message("角色名称重复");
         }
@@ -74,13 +76,14 @@ public class RoleController {
 
     /**
      * 修改角色
+     *
      * @param roleVO
      * @return
      */
     @PutMapping("/update")
     @BossLog(action = " 修改角色信息 ")
     public BossResponse update(@RequestBody RoleVO roleVO) {
-        RoleDTO roleDTO = Convert.convert(RoleDTO.class ,roleVO);
+        RoleDTO roleDTO = Convert.convert(RoleDTO.class, roleVO);
         if (!ObjectUtils.isEmpty(roleService.findRoleByRoleName(roleDTO.getRoleName()))) {
             return new BossResponse().statusCode(BossStatusCodeConstant.ERROR).message("角色名称重复");
         }
@@ -96,6 +99,7 @@ public class RoleController {
 
     /**
      * 删除角色
+     *
      * @param id
      * @return
      */
@@ -111,6 +115,7 @@ public class RoleController {
 
     /**
      * 获取角色对应的权限树
+     *
      * @param roleId
      * @return
      */
@@ -123,13 +128,14 @@ public class RoleController {
 
     /**
      * 为角色分配权限
+     *
      * @param roleVO
      * @return
      */
     @PostMapping("/assign/permission/save")
     @BossLog(action = " 为角色分配权限 ")
     public BossResponse assignPermission(@RequestBody RoleVO roleVO) {
-        RoleDTO roleDTO = Convert.convert(RoleDTO.class ,roleVO);
+        RoleDTO roleDTO = Convert.convert(RoleDTO.class, roleVO);
         if (roleService.assignRolePermission(roleDTO)) {
             return new BossResponse().statusCode(BossStatusCodeConstant.SUCCESS).message("权限分配成功");
         } else {

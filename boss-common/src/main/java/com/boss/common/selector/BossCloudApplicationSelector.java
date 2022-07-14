@@ -20,4 +20,5 @@ public class BossCloudApplicationSelector implements ImportSelector {
                 BossOAuth2FeignConfigure.class.getName()
         };
     }
+
 }

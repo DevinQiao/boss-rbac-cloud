@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author DevinJoe
@@ -19,6 +19,7 @@ public interface PermissionDao extends BaseMapper<PermissionPO> {
 
     /**
      * 通过角色ID集合获得权限集合
+     *
      * @param rolesId
      * @return
      */
@@ -26,9 +27,11 @@ public interface PermissionDao extends BaseMapper<PermissionPO> {
 
     /**
      * 查询权限是否有分配的角色
+     *
      * @param id
      * @return
      */
     @Select("select count(1) from t_role_permission where permission_id = #{id}")
     int hasRole(Long id);
+
 }

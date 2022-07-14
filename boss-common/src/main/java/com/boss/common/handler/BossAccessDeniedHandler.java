@@ -23,4 +23,5 @@ public class BossAccessDeniedHandler implements AccessDeniedHandler {
         BossUtil.makeResponse(httpServletResponse, BossMediaTypeConstant.APPLICATION_JSON_UTF8_VALUE,
                 HttpServletResponse.SC_FORBIDDEN, response.message("没有权限访问该资源"));
     }
+
 }

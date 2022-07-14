@@ -24,4 +24,5 @@ public class BossAuthProperties {
     private String anonUrl;
 
     private BossValidateCodeProperties code = new BossValidateCodeProperties();
+
 }

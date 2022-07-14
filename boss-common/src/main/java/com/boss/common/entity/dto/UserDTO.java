@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author DevinJoe
@@ -153,4 +153,5 @@ public class UserDTO implements Serializable, UserDetails {
     public boolean isEnabled() {
         return this.enabled;
     }
+
 }

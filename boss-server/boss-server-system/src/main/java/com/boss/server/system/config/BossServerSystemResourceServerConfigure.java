@@ -46,4 +46,5 @@ public class BossServerSystemResourceServerConfigure extends ResourceServerConfi
         resources.authenticationEntryPoint(exceptionEntryPoint)
                 .accessDeniedHandler(accessDeniedHandler);
     }
+
 }

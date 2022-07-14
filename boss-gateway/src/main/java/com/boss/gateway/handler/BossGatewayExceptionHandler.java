@@ -70,4 +70,5 @@ public class BossGatewayExceptionHandler extends DefaultErrorWebExceptionHandler
     protected int getHttpStatus(Map<String, Object> errorAttributes) {
         return HttpStatus.INTERNAL_SERVER_ERROR.value();
     }
+
 }

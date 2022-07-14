@@ -11,4 +11,5 @@ public class BossAuthException extends Exception {
     public BossAuthException(String message) {
         super(message);
     }
+
 }

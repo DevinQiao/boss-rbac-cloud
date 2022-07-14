@@ -54,18 +54,22 @@ public class RouterVO implements Serializable {
      * 路由meta信息
      */
     private Meta meta;
+
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Meta implements Serializable {
+
         private static final long serialVersionUID = 2323195590119154148L;
         private String title;
         private String icon;
         private transient Object[] permissionCodes;
+
     }
 
     /**
      * 子路由
      */
     private List<RouterVO> children;
+
 }
