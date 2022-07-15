@@ -5,55 +5,54 @@ services:
     image: nacos/nacos-server:latest
     container_name: nacos-server
     volumes:
-      - "/boss/log:/log"
+      - "/cloud/log:/log"
     environment:
-      - PREFER_HOST_MODE=hostname
       - MODE=standalone
     ports:
       - 9001:9001
-  boss-monitor-admin:
-    image: boss-monitor-admin:latest
-    container_name: boss-monitor-admin
+  cloud-boss-monitor-admin:
+    image: cloud-boss-monitor-admin:latest
+    container_name: cloud-boss-monitor-admin
     volumes:
-      - "/boss/log:/log"
+      - "/cloud/log:/log"
     command:
       - "--nacos.url=121.41.53.139"
       - "--logstash.url=121.41.53.139"
     ports:
       - 9470:9470
-  boss-gateway:
-    image: boss-gateway:latest
-    container_name: boss-gateway
+  cloud-boss-gateway:
+    image: cloud-boss-gateway:latest
+    container_name: cloud-boss-gateway
     depends_on:
       - nacos-server
     volumes:
-      - "/boss/log:/log"
+      - "/cloud/log:/log"
     command:
       - "--nacos.url=121.41.53.139"
       - "--boss-monitor-admin=121.41.53.139"
       - "--logstash.url=121.41.53.139"
     ports:
       - 9370:9370
-  boss-auth:
-    image: boss-auth:latest
-    container_name: boss-auth
+  cloud-boss-auth:
+    image: cloud-boss-auth:latest
+    container_name: cloud-boss-auth
     depends_on:
       - nacos-server
     volumes:
-      - "/boss/log:/log"
+      - "/cloud/log:/log"
     command:
       - "--mysql.url=121.41.53.139"
       - "--redis.url=121.41.53.139"
       - "--nacos.url=121.41.53.139"
       - "--logstash.url=121.41.53.139"
       - "--boss-monitor-admin=121.41.53.139"
-  boss-server-system:
-    image: boss-server-system:latest
-    container_name: boss-server-system
+  cloud-boss-server-system:
+    image: cloud-boss-server-system:latest
+    container_name: cloud-boss-server-system
     depends_on:
       - nacos-server
     volumes:
-      - "/boss/log:/log"
+      - "/cloud/log:/log"
     command:
       - "--mysql.url=121.41.53.139"
       - "--rabbitmq.url=121.41.53.139"
@@ -61,13 +60,13 @@ services:
       - "--logstash.url=121.41.53.139"
       - "--boss-monitor-admin=121.41.53.139"
       - "--boss-gateway=121.41.53.139"
-  boss-server-test:
-    image: boss-server-test:latest
-    container_name: boss-server-test
+  cloud-boss-server-test:
+    image: cloud-boss-server-test:latest
+    container_name: cloud-boss-server-test
     depends_on:
       - nacos-server
     volumes:
-      - "/boss/log:/log"
+      - "/cloud/log:/log"
     command:
       - "--mysql.url=121.41.53.139"
       - "--rabbitmq.url=121.41.53.139"
@@ -75,9 +74,9 @@ services:
       - "--logstash.url=121.41.53.139"
       - "--boss-monitor-admin=121.41.53.139"
       - "--boss-gateway=121.41.53.139"
-  zipkin-server:
-    image: zipkin-server
-    container_name: zipkin-server
+  cloud-zipkin-server:
+    image: cloud-zipkin-server
+    container_name: cloud-zipkin-server
     command:
       - "--server.port=8402"
       - "--zipkin.storage.type=mysql"

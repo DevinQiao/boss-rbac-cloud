@@ -16,6 +16,21 @@ Boss-RBAC-Cloud                   ------ 整个项目的父模块
 └─sql                             ------ 微服务所用SQL语句
 ```
 
+### 项目相关技术地址
+
+> 除了Nacos用户名和密码为nacos，其他用户名为boss，密码为16250
+
+| 技术名称          | 地址                             |
+| ----------------- | -------------------------------- |
+| Nacos             | http://121.41.53.139:9001/nacos/ |
+| Kibana            | http://121.41.53.139:5601/       |
+| Zipkin            | http://121.41.53.139:8402/       |
+| Swagger           | http://121.41.53.139:9370/       |
+| Spring Boot Admin | http://121.41.53.139:9470/       |
+| RabbitMQ          | http://121.41.53.139:15672/      |
+
+
+
 ### Feign调用与容错处理
 
 Feign调用有五处，生产者是boss-server-test模块，消费者是boss-server-system模块。
@@ -192,7 +207,6 @@ Feign调用有五处，生产者是boss-server-test模块，消费者是boss-ser
     <td align="center" style="background: #fff"><img src="images/gateway_12.png"/></td>
    </tr>
 </table>
-
 ### Nacos使用
 
 <table>
@@ -208,6 +222,99 @@ Feign调用有五处，生产者是boss-server-test模块，消费者是boss-ser
   </tr>
   <tr>
     <td align="center" style="background: #fff"><img src="images/nacos_2.png"/>
+      </td>
+   </tr>
+</table>
+
+### Docker部署
+
+<table>
+  <tr>
+    <td align="center" style="background: #fff"><b>1.容器截图</b></td>
+  </tr>
+  <tr>
+    <td align="center" style="background: #fff"><img src="images/docker_1.png"/>
+      </td>
+   </tr>
+  <tr>
+    <td align="center" style="background: #fff"><b>2.部署后测试/captcha接口</b></td>
+  </tr>
+  <tr>
+    <td align="center" style="background: #fff"><img src="images/docker_2.png"/>
+      </td>
+   </tr>
+  <tr>
+    <td align="center" style="background: #fff"><b>3.部署后测试/oauth/token接口</b></td>
+  </tr>
+  <tr>
+    <td align="center" style="background: #fff"><img src="images/docker_3.png"/>
+      </td>
+   </tr>
+  <tr>
+    <td align="center" style="background: #fff"><b>4.部署后测试/hello接口</b></td>
+  </tr>
+  <tr>
+    <td align="center" style="background: #fff"><img src="images/docker_4.png"/>
+      </td>
+   </tr>
+</table>
+
+### Kibana
+
+<table>
+  <tr>
+    <td align="center" style="background: #fff"><b>搜索带有“服务”的日志</b></td>
+  </tr>
+  <tr>
+    <td align="center" style="background: #fff"><img src="images/Kibana.png"/>
+      </td>
+   </tr>
+</table>
+
+### Zipkin
+
+<table>
+  <tr>
+    <td align="center" style="background: #fff"><b>Zipkin查询</b></td>
+  </tr>
+  <tr>
+    <td align="center" style="background: #fff"><img src="images/Zipkin.png"/>
+      </td>
+   </tr>
+</table>
+
+### Swagger
+
+<table>
+  <tr>
+    <td align="center" style="background: #fff"><b>SwaggerUI</b></td>
+  </tr>
+  <tr>
+    <td align="center" style="background: #fff"><img src="images/Swagger.png"/>
+      </td>
+   </tr>
+</table>
+
+### Spring Boot Admin
+
+<table>
+  <tr>
+    <td align="center" style="background: #fff"><b>监控中心</b></td>
+  </tr>
+  <tr>
+    <td align="center" style="background: #fff"><img src="images/SpringBootAdmin.png"/>
+      </td>
+   </tr>
+</table>
+
+### RabbitMQ
+
+<table>
+  <tr>
+    <td align="center" style="background: #fff"><b>RabbitMQ Admin信息</b></td>
+  </tr>
+  <tr>
+    <td align="center" style="background: #fff"><img src="images/RabbitMQ.png"/>
       </td>
    </tr>
 </table>
